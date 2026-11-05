@@ -2,6 +2,8 @@ from collections import Counter
 from functools import lru_cache
 import matplotlib.pyplot as plt
 
+# Code reviewed and tested by Eli Krantz
+
 """
 Gavin McAfee
 14882241
