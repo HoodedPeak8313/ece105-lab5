@@ -93,9 +93,12 @@ Example: champion(length, 10) is (9, 20): the sequence from 9 has
 # The n from 1 to n_max with the largest f(n), and f(n)
 def champion(f, n_max):
     # 1.-2. best
-    pass
+    best = 1
+    for n in range(2,n_max+1):
+        if f(n)>f(best):
+            best = n
     # 3. return (replace 0, 0)
-    return 0, 0
+    return best,f(best)
 
 """
 COMPLETE (#3):
@@ -116,15 +119,20 @@ cdf    is [0.2, 0.3, 0.4, 0.7, 0.8, 0.9, 1.0]
 # The values in data, and their PMF and CDF
 def pmf_cdf(data):
     # 1. counts
-    pass
+    counts = Counter(data)
     # 2. values
-    pass
+    values = sorted(counts)
     # 3. pmf
-    pass
+    pmf = [counts[v]/len(data) for v in values]
     # 4. cdf
-    pass
+    cdf = []
+    running = 0
+
+    for v in values:
+        running += counts[v]
+        cdf.append(running / len(data))
     # return the three lists (replace the empty ones)
-    return [], [], []
+    return values,pmf,cdf
 
 # The median: the first value where the CDF reaches 1/2
 # (0 if there are no values)
